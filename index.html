@@ -1,0 +1,1341 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechPortfolio 2.0 - Inovasi Digital Masa Depan</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+        }
+        
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .card-3d {
+            transform-style: preserve-3d;
+            transition: all 0.5s ease;
+        }
+        
+        .card-3d:hover {
+            transform: rotateY(10deg) rotateX(5deg) translateZ(20px);
+        }
+        
+        .neon-glow {
+            box-shadow: 0 0 20px rgba(102, 126, 234, 0.5);
+            animation: neon-pulse 2s infinite alternate;
+        }
+        
+        @keyframes neon-pulse {
+            0% { box-shadow: 0 0 20px rgba(102, 126, 234, 0.5); }
+            100% { box-shadow: 0 0 40px rgba(102, 126, 234, 0.8), 0 0 60px rgba(102, 126, 234, 0.4); }
+        }
+        
+        .typing-animation {
+            overflow: hidden;
+            border-right: 3px solid;
+            white-space: nowrap;
+            animation: typing 3s steps(40, end), blink-caret 0.75s step-end infinite;
+        }
+        
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+        
+        @keyframes blink-caret {
+            from, to { border-color: transparent; }
+            50% { border-color: white; }
+        }
+        
+        .particle {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            opacity: 0.7;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+        
+        .tech-stack-item {
+            transition: all 0.3s ease;
+        }
+        
+        .tech-stack-item:hover {
+            transform: scale(1.1) rotate(5deg);
+        }
+        
+        .progress-bar {
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            animation: progress-fill 2s ease-out;
+        }
+        
+        @keyframes progress-fill {
+            0% { width: 0%; }
+        }
+        
+        .scroll-indicator {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            transform-origin: left;
+            z-index: 1000;
+        }
+        
+        .hamburger {
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 4px;
+        }
+        
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: white;
+            margin: 3px 0;
+            transition: 0.3s;
+            border-radius: 2px;
+        }
+        
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(-45deg) translate(-5px, 6px);
+        }
+        
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+        
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(45deg) translate(-5px, -6px);
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white overflow-x-hidden">
+    <!-- Scroll Progress Indicator -->
+    <div id="scrollProgress" class="scroll-indicator"></div>
+    
+    <!-- Floating Particles -->
+    <div id="particles" class="fixed inset-0 pointer-events-none z-0"></div>
+    
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass-effect">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div class="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+                    TechPortfolio 2.0
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="hover:text-blue-400 transition-colors relative group">
+                        Beranda
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-400 transition-all group-hover:w-full"></span>
+                    </a>
+                    <a href="#about" class="hover:text-blue-400 transition-colors relative group">
+                        Tentang
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-400 transition-all group-hover:w-full"></span>
+                    </a>
+                    <a href="#projects" class="hover:text-blue-400 transition-colors relative group">
+                        Proyek
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-400 transition-all group-hover:w-full"></span>
+                    </a>
+                    <a href="#skills" class="hover:text-blue-400 transition-colors relative group">
+                        Keahlian
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-400 transition-all group-hover:w-full"></span>
+                    </a>
+                    <a href="#contact" class="hover:text-blue-400 transition-colors relative group">
+                        Kontak
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-400 transition-all group-hover:w-full"></span>
+                    </a>
+                </div>
+                <button class="md:hidden hamburger" onclick="toggleMobileMenu()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="fixed inset-y-0 right-0 z-50 w-64 glass-effect transform translate-x-full transition-transform duration-300 ease-in-out md:hidden">
+        <div class="flex flex-col h-full pt-20 pb-6 px-6">
+            <nav class="flex-1">
+                <div class="space-y-6">
+                    <a href="#home" onclick="closeMobileMenu()" class="block text-white hover:text-blue-400 transition-colors text-lg font-medium">
+                        🏠 Beranda
+                    </a>
+                    <a href="#about" onclick="closeMobileMenu()" class="block text-white hover:text-blue-400 transition-colors text-lg font-medium">
+                        👤 Tentang
+                    </a>
+                    <a href="#projects" onclick="closeMobileMenu()" class="block text-white hover:text-blue-400 transition-colors text-lg font-medium">
+                        🚀 Proyek
+                    </a>
+                    <a href="#skills" onclick="closeMobileMenu()" class="block text-white hover:text-blue-400 transition-colors text-lg font-medium">
+                        ⚡ Keahlian
+                    </a>
+                    <a href="#contact" onclick="closeMobileMenu()" class="block text-white hover:text-blue-400 transition-colors text-lg font-medium">
+                        📞 Kontak
+                    </a>
+                </div>
+            </nav>
+            
+            <div class="border-t border-gray-600 pt-6">
+                <div class="space-y-4">
+                    <button onclick="openContactForm(); closeMobileMenu();" class="w-full bg-gradient-to-r from-blue-500 to-purple-500 text-white py-3 rounded-xl font-semibold hover:from-blue-600 hover:to-purple-600 transition-all">
+                        Mulai Proyek
+                    </button>
+                    <button onclick="downloadCV(); closeMobileMenu();" class="w-full glass-effect border border-blue-400 text-blue-400 py-3 rounded-xl font-semibold hover:bg-blue-400 hover:text-white transition-all">
+                        Download CV
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobileMenuOverlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden md:hidden" onclick="closeMobileMenu()"></div>
+
+    <!-- Hero Section -->
+    <section id="home" class="gradient-bg min-h-screen flex items-center justify-center relative overflow-hidden">
+        <div class="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8 z-10">
+            <div class="mb-6">
+                <div class="w-24 h-24 sm:w-32 sm:h-32 mx-auto glass-effect rounded-full flex items-center justify-center mb-6 neon-glow">
+                    <svg class="w-12 h-12 sm:w-16 sm:h-16 text-white" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3z"/>
+                    </svg>
+                </div>
+            </div>
+            <h1 class="text-3xl sm:text-4xl md:text-6xl font-bold mb-4">
+                <span class="typing-animation">Inovasi Digital</span>
+            </h1>
+            <h2 class="text-xl sm:text-2xl md:text-3xl font-light mb-6 text-blue-200">Masa Depan Teknologi</h2>
+            <p class="text-base sm:text-lg md:text-xl mb-8 opacity-90 max-w-3xl mx-auto leading-relaxed">
+                Mengembangkan solusi teknologi canggih dengan AI, Blockchain, IoT, dan teknologi emerging lainnya untuk menciptakan masa depan yang lebih baik
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <button onclick="scrollToSection('projects')" class="neon-glow bg-white text-purple-600 px-6 py-3 rounded-full font-semibold text-base hover:bg-gray-100 transition-all transform hover:scale-105">
+                    Jelajahi Proyek
+                </button>
+                <button onclick="scrollToSection('contact')" class="glass-effect border-2 border-white px-6 py-3 rounded-full font-semibold text-base hover:bg-white hover:text-purple-600 transition-all transform hover:scale-105">
+                    Hubungi Saya
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-12 sm:py-16 lg:py-20 bg-gray-800 relative">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+                    Tentang Saya
+                </h2>
+                <p class="text-lg sm:text-xl text-gray-300 max-w-3xl mx-auto">
+                    Seorang teknologi enthusiast dengan passion untuk mengembangkan solusi inovatif menggunakan teknologi terdepan
+                </p>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-8 items-center">
+                <div class="space-y-4">
+                    <div class="glass-effect p-6 rounded-2xl">
+                        <h3 class="text-xl font-bold mb-3 text-blue-400">🚀 Visi</h3>
+                        <p class="text-gray-300 leading-relaxed text-sm sm:text-base">
+                            Menciptakan teknologi yang dapat mengubah cara manusia berinteraksi dengan dunia digital, 
+                            dengan fokus pada AI, automation, dan user experience yang revolusioner.
+                        </p>
+                    </div>
+                    
+                    <div class="glass-effect p-6 rounded-2xl">
+                        <h3 class="text-xl font-bold mb-3 text-purple-400">💡 Misi</h3>
+                        <p class="text-gray-300 leading-relaxed text-sm sm:text-base">
+                            Mengembangkan solusi teknologi yang tidak hanya canggih secara teknis, 
+                            tetapi juga memberikan dampak positif nyata bagi masyarakat dan industri.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="space-y-4">
+                    <div class="text-center">
+                        <div class="text-3xl font-bold text-blue-400 mb-1">5+</div>
+                        <div class="text-gray-300 text-sm">Tahun Pengalaman</div>
+                    </div>
+                    
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="text-center glass-effect p-4 rounded-xl">
+                            <div class="text-2xl font-bold text-purple-400 mb-1">50+</div>
+                            <div class="text-gray-300 text-xs">Proyek Selesai</div>
+                        </div>
+                        <div class="text-center glass-effect p-4 rounded-xl">
+                            <div class="text-2xl font-bold text-green-400 mb-1">15+</div>
+                            <div class="text-gray-300 text-xs">Teknologi Dikuasai</div>
+                        </div>
+                        <div class="text-center glass-effect p-4 rounded-xl">
+                            <div class="text-2xl font-bold text-yellow-400 mb-1">100%</div>
+                            <div class="text-gray-300 text-xs">Client Satisfaction</div>
+                        </div>
+                        <div class="text-center glass-effect p-4 rounded-xl">
+                            <div class="text-2xl font-bold text-red-400 mb-1">24/7</div>
+                            <div class="text-gray-300 text-xs">Support</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-12 sm:py-16 lg:py-20 bg-gray-900">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+                    Proyek Unggulan
+                </h2>
+                <p class="text-lg sm:text-xl text-gray-300">Solusi teknologi canggih yang telah dikembangkan</p>
+            </div>
+            
+            <!-- Project Filter -->
+            <div class="flex flex-wrap justify-center gap-4 mb-12">
+                <button onclick="filterProjects('all')" class="filter-btn active px-6 py-3 rounded-full glass-effect hover:bg-blue-600 transition-all">
+                    Semua
+                </button>
+                <button onclick="filterProjects('ai')" class="filter-btn px-6 py-3 rounded-full glass-effect hover:bg-blue-600 transition-all">
+                    AI & ML
+                </button>
+                <button onclick="filterProjects('blockchain')" class="filter-btn px-6 py-3 rounded-full glass-effect hover:bg-blue-600 transition-all">
+                    Blockchain
+                </button>
+                <button onclick="filterProjects('iot')" class="filter-btn px-6 py-3 rounded-full glass-effect hover:bg-blue-600 transition-all">
+                    IoT
+                </button>
+                <button onclick="filterProjects('web3')" class="filter-btn px-6 py-3 rounded-full glass-effect hover:bg-blue-600 transition-all">
+                    Web3
+                </button>
+            </div>
+            
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6" id="projectsGrid">
+                <!-- AI Projects -->
+                <div class="project-card card-3d glass-effect rounded-2xl p-6 border border-blue-500/30" data-category="ai">
+                    <div class="w-12 h-12 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-xl flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"/>
+                            <path fill-rule="evenodd" d="M4 5a2 2 0 012-2v1a1 1 0 001 1h6a1 1 0 001-1V3a2 2 0 012 2v6a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm8 8v2h1a2 2 0 002-2V9a2 2 0 00-2-2h-1v2a2 2 0 01-2 2H6a2 2 0 01-2-2V7H3a2 2 0 00-2 2v4a2 2 0 002 2h1v-2a2 2 0 012-2h4a2 2 0 012 2z" clip-rule="evenodd"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-bold mb-3 text-blue-400">Neural Network Optimizer</h3>
+                    <p class="text-gray-300 mb-4 text-sm">AI system yang mengoptimalkan arsitektur neural network secara otomatis menggunakan evolutionary algorithms dan AutoML.</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="px-2 py-1 bg-blue-500/20 text-blue-300 rounded-full text-xs">PyTorch</span>
+                        <span class="px-2 py-1 bg-green-500/20 text-green-300 rounded-full text-xs">AutoML</span>
+                        <span class="px-2 py-1 bg-purple-500/20 text-purple-300 rounded-full text-xs">CUDA</span>
+                    </div>
+                    <button onclick="showProjectDetails('neural-optimizer')" class="w-full bg-gradient-to-r from-blue-500 to-cyan-500 text-white py-2 rounded-xl hover:from-blue-600 hover:to-cyan-600 transition-all transform hover:scale-105 text-sm">
+                        Lihat Detail
+                    </button>
+                </div>
+
+                <!-- Blockchain Projects -->
+                <div class="project-card card-3d glass-effect rounded-2xl p-6 border border-green-500/30" data-category="blockchain">
+                    <div class="w-12 h-12 bg-gradient-to-r from-green-500 to-emerald-500 rounded-xl flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M4 4a2 2 0 00-2 2v4a2 2 0 002 2V6h10a2 2 0 00-2-2H4zm2 6a2 2 0 012-2h8a2 2 0 012 2v4a2 2 0 01-2 2H8a2 2 0 01-2-2v-4zm6 4a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-bold mb-3 text-green-400">Cross-Chain Bridge Protocol</h3>
+                    <p class="text-gray-300 mb-4 text-sm">Protocol untuk transfer aset antar blockchain dengan keamanan tinggi dan biaya rendah menggunakan zero-knowledge proofs.</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="px-2 py-1 bg-yellow-500/20 text-yellow-300 rounded-full text-xs">Solidity</span>
+                        <span class="px-2 py-1 bg-blue-500/20 text-blue-300 rounded-full text-xs">Rust</span>
+                        <span class="px-2 py-1 bg-purple-500/20 text-purple-300 rounded-full text-xs">zk-SNARKs</span>
+                    </div>
+                    <button onclick="showProjectDetails('cross-chain-bridge')" class="w-full bg-gradient-to-r from-green-500 to-emerald-500 text-white py-2 rounded-xl hover:from-green-600 hover:to-emerald-600 transition-all transform hover:scale-105 text-sm">
+                        Lihat Detail
+                    </button>
+                </div>
+
+                <!-- IoT Projects -->
+                <div class="project-card card-3d glass-effect rounded-2xl p-6 border border-purple-500/30" data-category="iot">
+                    <div class="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-bold mb-3 text-purple-400">Autonomous Drone Swarm</h3>
+                    <p class="text-gray-300 mb-4 text-sm">Sistem koordinasi drone swarm untuk monitoring lingkungan, search & rescue, dan agricultural automation.</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="px-2 py-1 bg-red-500/20 text-red-300 rounded-full text-xs">ROS</span>
+                        <span class="px-2 py-1 bg-blue-500/20 text-blue-300 rounded-full text-xs">Computer Vision</span>
+                        <span class="px-2 py-1 bg-green-500/20 text-green-300 rounded-full text-xs">LoRaWAN</span>
+                    </div>
+                    <button onclick="showProjectDetails('drone-swarm')" class="w-full bg-gradient-to-r from-purple-500 to-pink-500 text-white py-2 rounded-xl hover:from-purple-600 hover:to-pink-600 transition-all transform hover:scale-105 text-sm">
+                        Lihat Detail
+                    </button>
+                </div>
+
+                <!-- Web3 Projects -->
+                <div class="project-card card-3d glass-effect rounded-2xl p-8 border border-cyan-500/30" data-category="web3">
+                    <div class="w-16 h-16 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-xl flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M12.586 4.586a2 2 0 112.828 2.828l-3 3a2 2 0 01-2.828 0 1 1 0 00-1.414 1.414 4 4 0 005.656 0l3-3a4 4 0 00-5.656-5.656l-1.5 1.5a1 1 0 101.414 1.414l1.5-1.5zm-5 5a2 2 0 012.828 0 1 1 0 101.414-1.414 4 4 0 00-5.656 0l-3 3a4 4 0 105.656 5.656l1.5-1.5a1 1 0 10-1.414-1.414l-1.5 1.5a2 2 0 11-2.828-2.828l3-3z" clip-rule="evenodd"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-cyan-400">Decentralized Social Network</h3>
+                    <p class="text-gray-300 mb-6">Platform media sosial terdesentralisasi dengan content monetization, NFT integration, dan governance token.</p>
+                    <div class="flex flex-wrap gap-2 mb-6">
+                        <span class="px-3 py-1 bg-blue-500/20 text-blue-300 rounded-full text-sm">Next.js</span>
+                        <span class="px-3 py-1 bg-purple-500/20 text-purple-300 rounded-full text-sm">IPFS</span>
+                        <span class="px-3 py-1 bg-green-500/20 text-green-300 rounded-full text-sm">GraphQL</span>
+                    </div>
+                    <button onclick="showProjectDetails('decentralized-social')" class="w-full bg-gradient-to-r from-cyan-500 to-blue-500 text-white py-3 rounded-xl hover:from-cyan-600 hover:to-blue-600 transition-all transform hover:scale-105">
+                        Lihat Detail
+                    </button>
+                </div>
+
+                <!-- Additional AI Project -->
+                <div class="project-card card-3d glass-effect rounded-2xl p-8 border border-orange-500/30" data-category="ai">
+                    <div class="w-16 h-16 bg-gradient-to-r from-orange-500 to-red-500 rounded-xl flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-orange-400">Quantum ML Framework</h3>
+                    <p class="text-gray-300 mb-6">Framework machine learning quantum untuk optimasi kompleks dan pattern recognition dengan quantum advantage.</p>
+                    <div class="flex flex-wrap gap-2 mb-6">
+                        <span class="px-3 py-1 bg-purple-500/20 text-purple-300 rounded-full text-sm">Qiskit</span>
+                        <span class="px-3 py-1 bg-blue-500/20 text-blue-300 rounded-full text-sm">Cirq</span>
+                        <span class="px-3 py-1 bg-green-500/20 text-green-300 rounded-full text-sm">PennyLane</span>
+                    </div>
+                    <button onclick="showProjectDetails('quantum-ml')" class="w-full bg-gradient-to-r from-orange-500 to-red-500 text-white py-3 rounded-xl hover:from-orange-600 hover:to-red-600 transition-all transform hover:scale-105">
+                        Lihat Detail
+                    </button>
+                </div>
+
+                <!-- Additional Web3 Project -->
+                <div class="project-card card-3d glass-effect rounded-2xl p-8 border border-indigo-500/30" data-category="web3">
+                    <div class="w-16 h-16 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-xl flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"/>
+                            <path fill-rule="evenodd" d="M4 5a2 2 0 012-2v1a1 1 0 001 1h6a1 1 0 001-1V3a2 2 0 012 2v6a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 6V8a1 1 0 011-1h4a1 1 0 011 1v3a1 1 0 11-2 0V9h-2v2a1 1 0 11-2 0z" clip-rule="evenodd"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-indigo-400">Metaverse Real Estate</h3>
+                    <p class="text-gray-300 mb-6">Platform jual beli properti virtual di metaverse dengan VR integration, smart contracts, dan virtual economy.</p>
+                    <div class="flex flex-wrap gap-2 mb-6">
+                        <span class="px-3 py-1 bg-indigo-500/20 text-indigo-300 rounded-full text-sm">Unity</span>
+                        <span class="px-3 py-1 bg-green-500/20 text-green-300 rounded-full text-sm">Ethereum</span>
+                        <span class="px-3 py-1 bg-pink-500/20 text-pink-300 rounded-full text-sm">WebXR</span>
+                    </div>
+                    <button onclick="showProjectDetails('metaverse-realestate')" class="w-full bg-gradient-to-r from-indigo-500 to-purple-500 text-white py-3 rounded-xl hover:from-indigo-600 hover:to-purple-600 transition-all transform hover:scale-105">
+                        Lihat Detail
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-12 sm:py-16 lg:py-20 bg-gray-800">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+                    Tech Stack & Keahlian
+                </h2>
+                <p class="text-lg sm:text-xl text-gray-300">Menguasai teknologi terdepan untuk solusi masa depan</p>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-12">
+                <!-- Technical Skills -->
+                <div class="space-y-8">
+                    <h3 class="text-2xl font-bold text-blue-400 mb-6">Technical Skills</h3>
+                    
+                    <div class="space-y-6">
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="text-white font-medium">Artificial Intelligence & Machine Learning</span>
+                                <span class="text-blue-400">95%</span>
+                            </div>
+                            <div class="w-full bg-gray-700 rounded-full h-3">
+                                <div class="progress-bar h-3 rounded-full" style="width: 95%"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="text-white font-medium">Blockchain & Smart Contracts</span>
+                                <span class="text-blue-400">90%</span>
+                            </div>
+                            <div class="w-full bg-gray-700 rounded-full h-3">
+                                <div class="progress-bar h-3 rounded-full" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="text-white font-medium">Cloud Computing & DevOps</span>
+                                <span class="text-blue-400">88%</span>
+                            </div>
+                            <div class="w-full bg-gray-700 rounded-full h-3">
+                                <div class="progress-bar h-3 rounded-full" style="width: 88%"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="text-white font-medium">IoT & Edge Computing</span>
+                                <span class="text-blue-400">85%</span>
+                            </div>
+                            <div class="w-full bg-gray-700 rounded-full h-3">
+                                <div class="progress-bar h-3 rounded-full" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="text-white font-medium">Quantum Computing</span>
+                                <span class="text-blue-400">75%</span>
+                            </div>
+                            <div class="w-full bg-gray-700 rounded-full h-3">
+                                <div class="progress-bar h-3 rounded-full" style="width: 75%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Technology Stack -->
+                <div>
+                    <h3 class="text-2xl font-bold text-purple-400 mb-6">Technology Stack</h3>
+                    
+                    <div class="grid grid-cols-3 md:grid-cols-4 gap-6">
+                        <div class="tech-stack-item glass-effect p-4 rounded-xl text-center">
+                            <div class="text-3xl mb-2">🐍</div>
+                            <div class="text-sm text-gray-300">Python</div>
+                        </div>
+                        
+                        <div class="tech-stack-item glass-effect p-4 rounded-xl text-center">
+                            <div class="text-3xl mb-2">⚛️</div>
+                            <div class="text-sm text-gray-300">React</div>
+                        </div>
+                        
+                        <div class="tech-stack-item glass-effect p-4 rounded-xl text-center">
+                            <div class="text-3xl mb-2">🦀</div>
+                            <div class="text-sm text-gray-300">Rust</div>
+                        </div>
+                        
+                        <div class="tech-stack-item glass-effect p-4 rounded-xl text-center">
+                            <div class="text-3xl mb-2">☁️</div>
+                            <div class="text-sm text-gray-300">AWS</div>
+                        </div>
+                        
+                        <div class="tech-stack-item glass-effect p-4 rounded-xl text-center">
+                            <div class="text-3xl mb-2">🔗</div>
+                            <div class="text-sm text-gray-300">Ethereum</div>
+                        </div>
+                        
+                        <div class="tech-stack-item glass-effect p-4 rounded-xl text-center">
+                            <div class="text-3xl mb-2">🧠</div>
+                            <div class="text-sm text-gray-300">TensorFlow</div>
+                        </div>
+                        
+                        <div class="tech-stack-item glass-effect p-4 rounded-xl text-center">
+                            <div class="text-3xl mb-2">🐳</div>
+                            <div class="text-sm text-gray-300">Docker</div>
+                        </div>
+                        
+                        <div class="tech-stack-item glass-effect p-4 rounded-xl text-center">
+                            <div class="text-3xl mb-2">⚡</div>
+                            <div class="text-sm text-gray-300">Node.js</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-12 sm:py-16 lg:py-20 bg-gray-900">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+                Mari Berkolaborasi
+            </h2>
+            <p class="text-lg sm:text-xl text-gray-300 mb-8">Siap mengembangkan proyek teknologi canggih bersama Anda</p>
+            
+            <div class="grid sm:grid-cols-3 gap-6 mb-8">
+                <div class="glass-effect p-6 rounded-2xl">
+                    <div class="w-12 h-12 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full flex items-center justify-center mx-auto mb-3">
+                        <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>
+                            <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-base font-semibold mb-2 text-blue-400">Email</h3>
+                    <p class="text-gray-300 text-sm">tech@portfolio.com</p>
+                </div>
+                
+                <div class="glass-effect p-6 rounded-2xl">
+                    <div class="w-12 h-12 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full flex items-center justify-center mx-auto mb-3">
+                        <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M7 2a2 2 0 00-2 2v12a2 2 0 002 2h6a2 2 0 002-2V4a2 2 0 00-2-2H7zm3 14a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-base font-semibold mb-2 text-green-400">WhatsApp</h3>
+                    <p class="text-gray-300 text-sm">+62 812-3456-7890</p>
+                </div>
+                
+                <div class="glass-effect p-6 rounded-2xl">
+                    <div class="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-3">
+                        <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M12.586 4.586a2 2 0 112.828 2.828l-3 3a2 2 0 01-2.828 0 1 1 0 00-1.414 1.414 4 4 0 005.656 0l3-3a4 4 0 00-5.656-5.656l-1.5 1.5a1 1 0 101.414 1.414l1.5-1.5zm-5 5a2 2 0 012.828 0 1 1 0 101.414-1.414 4 4 0 00-5.656 0l-3 3a4 4 0 105.656 5.656l1.5-1.5a1 1 0 10-1.414-1.414l-1.5 1.5a2 2 0 11-2.828-2.828l3-3z" clip-rule="evenodd"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-base font-semibold mb-2 text-purple-400">LinkedIn</h3>
+                    <p class="text-gray-300 text-sm">linkedin.com/in/techdev</p>
+                </div>
+            </div>
+            
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <button onclick="openContactForm()" class="neon-glow bg-gradient-to-r from-blue-500 to-purple-500 text-white px-6 py-3 rounded-full font-semibold text-base hover:from-blue-600 hover:to-purple-600 transition-all transform hover:scale-105">
+                    Mulai Proyek
+                </button>
+                <button onclick="downloadCV()" class="glass-effect border-2 border-blue-400 px-6 py-3 rounded-full font-semibold text-base hover:bg-blue-400 hover:text-gray-900 transition-all transform hover:scale-105">
+                    Download CV
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <div class="text-3xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent mb-4">
+                    TechPortfolio 2.0
+                </div>
+                <p class="text-gray-400 mb-8">Menghadirkan inovasi teknologi untuk masa depan yang lebih baik</p>
+                <div class="flex justify-center space-x-6 mb-8">
+                    <a href="#" class="text-gray-400 hover:text-blue-400 transition-colors transform hover:scale-110">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-blue-400 transition-colors transform hover:scale-110">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-blue-400 transition-colors transform hover:scale-110">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+                        </svg>
+                    </a>
+                </div>
+                <div class="border-t border-gray-800 pt-8 text-gray-400">
+                    <p>&copy; 2024 TechPortfolio 2.0. Semua hak dilindungi. Dibuat dengan ❤️ dan teknologi canggih.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Project Detail Modal -->
+    <div id="projectModal" class="fixed inset-0 bg-black bg-opacity-80 z-50 hidden flex items-center justify-center p-4">
+        <div class="glass-effect rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto border border-blue-500/30">
+            <div class="p-8">
+                <div class="flex justify-between items-center mb-6">
+                    <h3 id="modalTitle" class="text-3xl font-bold text-white"></h3>
+                    <button onclick="closeModal()" class="text-gray-400 hover:text-white transition-colors">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                </div>
+                <div id="modalContent" class="text-gray-300"></div>
+                <div class="mt-8 flex flex-wrap gap-4">
+                    <button class="bg-gradient-to-r from-blue-500 to-cyan-500 text-white px-6 py-3 rounded-xl hover:from-blue-600 hover:to-cyan-600 transition-all transform hover:scale-105">
+                        Demo Live
+                    </button>
+                    <button class="glass-effect border border-gray-400 text-gray-300 px-6 py-3 rounded-xl hover:bg-gray-400 hover:text-gray-900 transition-all transform hover:scale-105">
+                        Source Code
+                    </button>
+                    <button class="glass-effect border border-purple-400 text-purple-400 px-6 py-3 rounded-xl hover:bg-purple-400 hover:text-white transition-all transform hover:scale-105">
+                        Documentation
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Initialize particles
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            for (let i = 0; i < 50; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                particle.style.width = Math.random() * 4 + 2 + 'px';
+                particle.style.height = particle.style.width;
+                particle.style.animationDelay = Math.random() * 6 + 's';
+                particle.style.animationDuration = (Math.random() * 4 + 4) + 's';
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // Scroll progress indicator
+        function updateScrollProgress() {
+            const scrollProgress = document.getElementById('scrollProgress');
+            const scrollTop = document.documentElement.scrollTop;
+            const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrollPercent = (scrollTop / scrollHeight) * 100;
+            scrollProgress.style.transform = `scaleX(${scrollPercent / 100})`;
+        }
+
+        // Smooth scroll to section
+        function scrollToSection(sectionId) {
+            document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Project filtering
+        function filterProjects(category) {
+            const projectCards = document.querySelectorAll('.project-card');
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            
+            // Update active button
+            filterBtns.forEach(btn => btn.classList.remove('active', 'bg-blue-600'));
+            event.target.classList.add('active', 'bg-blue-600');
+            
+            // Filter projects
+            projectCards.forEach(card => {
+                if (category === 'all' || card.dataset.category === category) {
+                    card.style.display = 'block';
+                    card.style.animation = 'fadeIn 0.5s ease-in';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // Enhanced project details
+        const projectDetails = {
+            'neural-optimizer': {
+                title: 'Neural Network Optimizer',
+                content: `
+                    <div class="space-y-8">
+                        <div class="aspect-video bg-gradient-to-r from-blue-900 to-purple-900 rounded-xl flex items-center justify-center">
+                            <div class="text-center">
+                                <div class="text-6xl mb-4">🧠</div>
+                                <div class="text-2xl font-bold text-blue-400">Neural Network Optimizer</div>
+                                <div class="text-gray-300">AI-Powered Architecture Optimization</div>
+                            </div>
+                        </div>
+                        
+                        <div class="grid md:grid-cols-2 gap-8">
+                            <div>
+                                <h4 class="text-xl font-bold mb-4 text-blue-400">🚀 Fitur Unggulan</h4>
+                                <ul class="space-y-3">
+                                    <li class="flex items-start">
+                                        <span class="text-green-400 mr-2">✓</span>
+                                        <span>Automated Neural Architecture Search (NAS)</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="text-green-400 mr-2">✓</span>
+                                        <span>Evolutionary Algorithm Optimization</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="text-green-400 mr-2">✓</span>
+                                        <span>Multi-objective Optimization (Accuracy vs Speed)</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="text-green-400 mr-2">✓</span>
+                                        <span>Distributed Training Support</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            
+                            <div>
+                                <h4 class="text-xl font-bold mb-4 text-purple-400">⚡ Performance</h4>
+                                <div class="space-y-4">
+                                    <div>
+                                        <div class="flex justify-between mb-1">
+                                            <span>Accuracy Improvement</span>
+                                            <span class="text-green-400">+15%</span>
+                                        </div>
+                                        <div class="w-full bg-gray-700 rounded-full h-2">
+                                            <div class="bg-green-400 h-2 rounded-full" style="width: 85%"></div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="flex justify-between mb-1">
+                                            <span>Speed Optimization</span>
+                                            <span class="text-blue-400">+40%</span>
+                                        </div>
+                                        <div class="w-full bg-gray-700 rounded-full h-2">
+                                            <div class="bg-blue-400 h-2 rounded-full" style="width: 90%"></div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="flex justify-between mb-1">
+                                            <span>Resource Efficiency</span>
+                                            <span class="text-purple-400">+60%</span>
+                                        </div>
+                                        <div class="w-full bg-gray-700 rounded-full h-2">
+                                            <div class="bg-purple-400 h-2 rounded-full" style="width: 95%"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="glass-effect p-6 rounded-xl">
+                            <h4 class="text-xl font-bold mb-3 text-cyan-400">🔬 Technical Implementation</h4>
+                            <p class="text-gray-300 leading-relaxed">
+                                Sistem ini menggunakan kombinasi Genetic Algorithm dan Reinforcement Learning untuk mencari arsitektur neural network optimal. 
+                                Dengan memanfaatkan CUDA acceleration dan distributed computing, sistem dapat mengevaluasi ribuan arsitektur dalam waktu singkat.
+                                Hasil optimasi menunjukkan peningkatan signifikan dalam akurasi model sambil mengurangi computational cost hingga 60%.
+                            </p>
+                        </div>
+                    </div>
+                `
+            },
+            'cross-chain-bridge': {
+                title: 'Cross-Chain Bridge Protocol',
+                content: `
+                    <div class="space-y-8">
+                        <div class="aspect-video bg-gradient-to-r from-green-900 to-emerald-900 rounded-xl flex items-center justify-center">
+                            <div class="text-center">
+                                <div class="text-6xl mb-4">🌉</div>
+                                <div class="text-2xl font-bold text-green-400">Cross-Chain Bridge</div>
+                                <div class="text-gray-300">Secure Multi-Blockchain Protocol</div>
+                            </div>
+                        </div>
+                        
+                        <div class="grid md:grid-cols-2 gap-8">
+                            <div>
+                                <h4 class="text-xl font-bold mb-4 text-green-400">🔐 Security Features</h4>
+                                <ul class="space-y-3">
+                                    <li class="flex items-start">
+                                        <span class="text-green-400 mr-2">✓</span>
+                                        <span>Zero-Knowledge Proof Validation</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="text-green-400 mr-2">✓</span>
+                                        <span>Multi-Signature Wallet Integration</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="text-green-400 mr-2">✓</span>
+                                        <span>Automated Fraud Detection</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="text-green-400 mr-2">✓</span>
+                                        <span>Emergency Pause Mechanism</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            
+                            <div>
+                                <h4 class="text-xl font-bold mb-4 text-emerald-400">🌐 Supported Networks</h4>
+                                <div class="grid grid-cols-2 gap-3">
+                                    <div class="glass-effect p-3 rounded-lg text-center">
+                                        <div class="text-2xl mb-1">⟠</div>
+                                        <div class="text-sm">Ethereum</div>
+                                    </div>
+                                    <div class="glass-effect p-3 rounded-lg text-center">
+                                        <div class="text-2xl mb-1">🔺</div>
+                                        <div class="text-sm">Polygon</div>
+                                    </div>
+                                    <div class="glass-effect p-3 rounded-lg text-center">
+                                        <div class="text-2xl mb-1">🟡</div>
+                                        <div class="text-sm">Binance SC</div>
+                                    </div>
+                                    <div class="glass-effect p-3 rounded-lg text-center">
+                                        <div class="text-2xl mb-1">🔵</div>
+                                        <div class="text-sm">Avalanche</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="glass-effect p-6 rounded-xl">
+                            <h4 class="text-xl font-bold mb-3 text-yellow-400">💰 Economic Model</h4>
+                            <p class="text-gray-300 leading-relaxed mb-4">
+                                Protocol menggunakan dynamic fee structure yang menyesuaikan dengan network congestion dan volatilitas pasar. 
+                                Liquidity providers mendapat reward dari transaction fees dan governance token distribution.
+                            </p>
+                            <div class="grid grid-cols-3 gap-4 text-center">
+                                <div>
+                                    <div class="text-2xl font-bold text-green-400">0.1%</div>
+                                    <div class="text-sm text-gray-400">Base Fee</div>
+                                </div>
+                                <div>
+                                    <div class="text-2xl font-bold text-blue-400">$50M+</div>
+                                    <div class="text-sm text-gray-400">TVL</div>
+                                </div>
+                                <div>
+                                    <div class="text-2xl font-bold text-purple-400">99.9%</div>
+                                    <div class="text-sm text-gray-400">Uptime</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `
+            },
+            'drone-swarm': {
+                title: 'Autonomous Drone Swarm',
+                content: `
+                    <div class="space-y-8">
+                        <div class="aspect-video bg-gradient-to-r from-purple-900 to-pink-900 rounded-xl flex items-center justify-center">
+                            <div class="text-center">
+                                <div class="text-6xl mb-4">🚁</div>
+                                <div class="text-2xl font-bold text-purple-400">Drone Swarm System</div>
+                                <div class="text-gray-300">Autonomous Coordination & Control</div>
+                            </div>
+                        </div>
+                        
+                        <div class="grid md:grid-cols-2 gap-8">
+                            <div>
+                                <h4 class="text-xl font-bold mb-4 text-purple-400">🎯 Applications</h4>
+                                <ul class="space-y-3">
+                                    <li class="flex items-start">
+                                        <span class="text-green-400 mr-2">✓</span>
+                                        <span>Search & Rescue Operations</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="text-green-400 mr-2">✓</span>
+                                        <span>Agricultural Monitoring</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="text-green-400 mr-2">✓</span>
+                                        <span>Environmental Surveillance</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="text-green-400 mr-2">✓</span>
+                                        <span>Disaster Response</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            
+                            <div>
+                                <h4 class="text-xl font-bold mb-4 text-pink-400">🤖 AI Capabilities</h4>
+                                <div class="space-y-4">
+                                    <div class="glass-effect p-4 rounded-lg">
+                                        <div class="font-semibold text-blue-400 mb-1">Swarm Intelligence</div>
+                                        <div class="text-sm text-gray-300">Collective decision making and task allocation</div>
+                                    </div>
+                                    <div class="glass-effect p-4 rounded-lg">
+                                        <div class="font-semibold text-green-400 mb-1">Computer Vision</div>
+                                        <div class="text-sm text-gray-300">Real-time object detection and tracking</div>
+                                    </div>
+                                    <div class="glass-effect p-4 rounded-lg">
+                                        <div class="font-semibold text-purple-400 mb-1">Path Planning</div>
+                                        <div class="text-sm text-gray-300">Dynamic obstacle avoidance and route optimization</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="glass-effect p-6 rounded-xl">
+                            <h4 class="text-xl font-bold mb-3 text-cyan-400">📊 Performance Metrics</h4>
+                            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+                                <div>
+                                    <div class="text-3xl font-bold text-green-400">50+</div>
+                                    <div class="text-sm text-gray-400">Max Drones</div>
+                                </div>
+                                <div>
+                                    <div class="text-3xl font-bold text-blue-400">10km</div>
+                                    <div class="text-sm text-gray-400">Range</div>
+                                </div>
+                                <div>
+                                    <div class="text-3xl font-bold text-purple-400">2hrs</div>
+                                    <div class="text-sm text-gray-400">Flight Time</div>
+                                </div>
+                                <div>
+                                    <div class="text-3xl font-bold text-yellow-400">95%</div>
+                                    <div class="text-sm text-gray-400">Accuracy</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `
+            },
+            'decentralized-social': {
+                title: 'Decentralized Social Network',
+                content: `
+                    <div class="space-y-8">
+                        <div class="aspect-video bg-gradient-to-r from-cyan-900 to-blue-900 rounded-xl flex items-center justify-center">
+                            <div class="text-center">
+                                <div class="text-6xl mb-4">🌐</div>
+                                <div class="text-2xl font-bold text-cyan-400">Decentralized Social</div>
+                                <div class="text-gray-300">Web3 Social Media Platform</div>
+                            </div>
+                        </div>
+                        
+                        <div class="grid md:grid-cols-2 gap-8">
+                            <div>
+                                <h4 class="text-xl font-bold mb-4 text-cyan-400">🔒 Privacy Features</h4>
+                                <ul class="space-y-3">
+                                    <li class="flex items-start">
+                                        <span class="text-green-400 mr-2">✓</span>
+                                        <span>End-to-End Encryption</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="text-green-400 mr-2">✓</span>
+                                        <span>Zero Data Collection</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="text-green-400 mr-2">✓</span>
+                                        <span>Self-Sovereign Identity</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="text-green-400 mr-2">✓</span>
+                                        <span>Censorship Resistance</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            
+                            <div>
+                                <h4 class="text-xl font-bold mb-4 text-blue-400">💰 Monetization</h4>
+                                <div class="space-y-4">
+                                    <div class="glass-effect p-4 rounded-lg">
+                                        <div class="font-semibold text-green-400 mb-1">Creator Economy</div>
+                                        <div class="text-sm text-gray-300">Direct fan funding via crypto payments</div>
+                                    </div>
+                                    <div class="glass-effect p-4 rounded-lg">
+                                        <div class="font-semibold text-purple-400 mb-1">NFT Integration</div>
+                                        <div class="text-sm text-gray-300">Mint and trade content as NFTs</div>
+                                    </div>
+                                    <div class="glass-effect p-4 rounded-lg">
+                                        <div class="font-semibold text-yellow-400 mb-1">Governance Tokens</div>
+                                        <div class="text-sm text-gray-300">Earn tokens for platform participation</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="glass-effect p-6 rounded-xl">
+                            <h4 class="text-xl font-bold mb-3 text-pink-400">🚀 Platform Stats</h4>
+                            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+                                <div>
+                                    <div class="text-3xl font-bold text-blue-400">100K+</div>
+                                    <div class="text-sm text-gray-400">Active Users</div>
+                                </div>
+                                <div>
+                                    <div class="text-3xl font-bold text-green-400">1M+</div>
+                                    <div class="text-sm text-gray-400">Posts</div>
+                                </div>
+                                <div>
+                                    <div class="text-3xl font-bold text-purple-400">50K</div>
+                                    <div class="text-sm text-gray-400">NFTs Minted</div>
+                                </div>
+                                <div>
+                                    <div class="text-3xl font-bold text-yellow-400">$2M</div>
+                                    <div class="text-sm text-gray-400">Creator Earnings</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `
+            },
+            'quantum-ml': {
+                title: 'Quantum ML Framework',
+                content: `
+                    <div class="space-y-8">
+                        <div class="aspect-video bg-gradient-to-r from-orange-900 to-red-900 rounded-xl flex items-center justify-center">
+                            <div class="text-center">
+                                <div class="text-6xl mb-4">⚛️</div>
+                                <div class="text-2xl font-bold text-orange-400">Quantum ML Framework</div>
+                                <div class="text-gray-300">Next-Gen Computing Platform</div>
+                            </div>
+                        </div>
+                        
+                        <div class="grid md:grid-cols-2 gap-8">
+                            <div>
+                                <h4 class="text-xl font-bold mb-4 text-orange-400">🔬 Quantum Algorithms</h4>
+                                <ul class="space-y-3">
+                                    <li class="flex items-start">
+                                        <span class="text-green-400 mr-2">✓</span>
+                                        <span>Variational Quantum Eigensolver (VQE)</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="text-green-400 mr-2">✓</span>
+                                        <span>Quantum Approximate Optimization (QAOA)</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="text-green-400 mr-2">✓</span>
+                                        <span>Quantum Neural Networks (QNN)</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="text-green-400 mr-2">✓</span>
+                                        <span>Quantum Support Vector Machine</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            
+                            <div>
+                                <h4 class="text-xl font-bold mb-4 text-red-400">⚡ Quantum Advantage</h4>
+                                <div class="space-y-4">
+                                    <div>
+                                        <div class="flex justify-between mb-1">
+                                            <span>Optimization Speed</span>
+                                            <span class="text-green-400">1000x</span>
+                                        </div>
+                                        <div class="w-full bg-gray-700 rounded-full h-2">
+                                            <div class="bg-green-400 h-2 rounded-full" style="width: 100%"></div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="flex justify-between mb-1">
+                                            <span>Pattern Recognition</span>
+                                            <span class="text-blue-400">100x</span>
+                                        </div>
+                                        <div class="w-full bg-gray-700 rounded-full h-2">
+                                            <div class="bg-blue-400 h-2 rounded-full" style="width: 95%"></div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="flex justify-between mb-1">
+                                            <span>Cryptography</span>
+                                            <span class="text-purple-400">∞</span>
+                                        </div>
+                                        <div class="w-full bg-gray-700 rounded-full h-2">
+                                            <div class="bg-purple-400 h-2 rounded-full" style="width: 100%"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="glass-effect p-6 rounded-xl">
+                            <h4 class="text-xl font-bold mb-3 text-cyan-400">🎯 Use Cases</h4>
+                            <div class="grid md:grid-cols-3 gap-4">
+                                <div class="text-center p-4 glass-effect rounded-lg">
+                                    <div class="text-3xl mb-2">💊</div>
+                                    <div class="font-semibold text-blue-400">Drug Discovery</div>
+                                    <div class="text-sm text-gray-300 mt-1">Molecular simulation</div>
+                                </div>
+                                <div class="text-center p-4 glass-effect rounded-lg">
+                                    <div class="text-3xl mb-2">📈</div>
+                                    <div class="font-semibold text-green-400">Finance</div>
+                                    <div class="text-sm text-gray-300 mt-1">Portfolio optimization</div>
+                                </div>
+                                <div class="text-center p-4 glass-effect rounded-lg">
+                                    <div class="text-3xl mb-2">🔐</div>
+                                    <div class="font-semibold text-purple-400">Cryptography</div>
+                                    <div class="text-sm text-gray-300 mt-1">Quantum encryption</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `
+            },
+            'metaverse-realestate': {
+                title: 'Metaverse Real Estate',
+                content: `
+                    <div class="space-y-8">
+                        <div class="aspect-video bg-gradient-to-r from-indigo-900 to-purple-900 rounded-xl flex items-center justify-center">
+                            <div class="text-center">
+                                <div class="text-6xl mb-4">🏢</div>
+                                <div class="text-2xl font-bold text-indigo-400">Metaverse Real Estate</div>
+                                <div class="text-gray-300">Virtual Property Platform</div>
+                            </div>
+                        </div>
+                        
+                        <div class="grid md:grid-cols-2 gap-8">
+                            <div>
+                                <h4 class="text-xl font-bold mb-4 text-indigo-400">🏗️ Virtual Worlds</h4>
+                                <ul class="space-y-3">
+                                    <li class="flex items-start">
+                                        <span class="text-green-400 mr-2">✓</span>
+                                        <span>Decentraland Integration</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="text-green-400 mr-2">✓</span>
+                                        <span>The Sandbox Compatibility</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="text-green-400 mr-2">✓</span>
+                                        <span>Custom Virtual Environments</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="text-green-400 mr-2">✓</span>
+                                        <span>Cross-Platform Portability</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            
+                            <div>
+                                <h4 class="text-xl font-bold mb-4 text-purple-400">💎 NFT Features</h4>
+                                <div class="space-y-4">
+                                    <div class="glass-effect p-4 rounded-lg">
+                                        <div class="font-semibold text-blue-400 mb-1">Property Ownership</div>
+                                        <div class="text-sm text-gray-300">Blockchain-verified land titles</div>
+                                    </div>
+                                    <div class="glass-effect p-4 rounded-lg">
+                                        <div class="font-semibold text-green-400 mb-1">Revenue Sharing</div>
+                                        <div class="text-sm text-gray-300">Automated rental income distribution</div>
+                                    </div>
+                                    <div class="glass-effect p-4 rounded-lg">
+                                        <div class="font-semibold text-purple-400 mb-1">Virtual Assets</div>
+                                        <div class="text-sm text-gray-300">3D models, textures, and animations</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="glass-effect p-6 rounded-xl">
+                            <h4 class="text-xl font-bold mb-3 text-pink-400">📊 Market Data</h4>
+                            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+                                <div>
+                                    <div class="text-3xl font-bold text-green-400">$10M+</div>
+                                    <div class="text-sm text-gray-400">Total Sales</div>
+                                </div>
+                                <div>
+                                    <div class="text-3xl font-bold text-blue-400">5,000</div>
+                                    <div class="text-sm text-gray-400">Properties</div>
+                                </div>
+                                <div>
+                                    <div class="text-3xl font-bold text-purple-400">25%</div>
+                                    <div class="text-sm text-gray-400">Avg ROI</div>
+                                </div>
+                                <div>
+                                    <div class="text-3xl font-bold text-yellow-400">1,200</div>
+                                    <div class="text-sm text-gray-400">Active Users</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `
+            }
+        };
+
+        // Show project details
+        function showProjectDetails(projectId) {
+            const modal = document.getElementById('projectModal');
+            const title = document.getElementById('modalTitle');
+            const content = document.getElementById('modalContent');
+            
+            const project = projectDetails[projectId];
+            if (project) {
+                title.textContent = project.title;
+                content.innerHTML = project.content;
+                modal.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        // Close modal
+        function closeModal() {
+            const modal = document.getElementById('projectModal');
+            modal.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            const overlay = document.getElementById('mobileMenuOverlay');
+            const hamburger = document.querySelector('.hamburger');
+            
+            if (mobileMenu.classList.contains('translate-x-full')) {
+                mobileMenu.classList.remove('translate-x-full');
+                mobileMenu.classList.add('translate-x-0');
+                overlay.classList.remove('hidden');
+                hamburger.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            } else {
+                mobileMenu.classList.add('translate-x-full');
+                mobileMenu.classList.remove('translate-x-0');
+                overlay.classList.add('hidden');
+                hamburger.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        // Close mobile menu when clicking on a link
+        function closeMobileMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            const overlay = document.getElementById('mobileMenuOverlay');
+            const hamburger = document.querySelector('.hamburger');
+            
+            mobileMenu.classList.add('translate-x-full');
+            mobileMenu.classList.remove('translate-x-0');
+            overlay.classList.add('hidden');
+            hamburger.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Contact form
+        function openContactForm() {
+            alert('Form kontak canggih akan dibuka dengan validasi real-time dan integrasi API');
+        }
+
+        // Download CV
+        function downloadCV() {
+            alert('CV dalam format PDF akan didownload dengan portfolio lengkap');
+        }
+
+        // Initialize everything
+        document.addEventListener('DOMContentLoaded', function() {
+            createParticles();
+            
+            // Smooth scrolling for navigation
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth' });
+                    }
+                });
+            });
+
+            // Close modal when clicking outside
+            document.getElementById('projectModal').addEventListener('click', function(e) {
+                if (e.target === this) {
+                    closeModal();
+                }
+            });
+
+            // Scroll progress
+            window.addEventListener('scroll', updateScrollProgress);
+            
+            // Add fade-in animation to elements
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+            
+            // Observe all project cards
+            document.querySelectorAll('.project-card').forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(30px)';
+                card.style.transition = 'all 0.6s ease';
+                observer.observe(card);
+            });
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'96fcd81df3a4fd74',t:'MTc1NTMwNDQ0OC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
