@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DigitalApp - Solusi Digital Terdepan</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .gradient-bg { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        .card-hover { transition: all 0.3s ease; }
+        .card-hover:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+        .animate-float { animation: float 6s ease-in-out infinite; }
+        @keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-20px); } }
+        .tech-icon { transition: all 0.3s ease; }
+        .tech-icon:hover { transform: scale(1.1); }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg fixed w-full z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 flex items-center">
+                        <div class="w-8 h-8 bg-gradient-to-r from-purple-500 to-blue-500 rounded-lg mr-3"></div>
+                        <span class="text-xl font-bold text-gray-800">DigitalApp</span>
+                    </div>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#home" class="text-gray-700 hover:text-purple-600 transition-colors">Beranda</a>
+                    <a href="#features" class="text-gray-700 hover:text-purple-600 transition-colors">Fitur</a>
+                    <a href="#tech" class="text-gray-700 hover:text-purple-600 transition-colors">Teknologi</a>
+                    <a href="#demo" class="text-gray-700 hover:text-purple-600 transition-colors">Demo</a>
+                    <a href="#contact" class="bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700 transition-colors">Kontak</a>
+                </div>
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-gray-700 hover:text-purple-600">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="md:hidden hidden bg-white border-t">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="#home" class="block px-3 py-2 text-gray-700 hover:text-purple-600">Beranda</a>
+                <a href="#features" class="block px-3 py-2 text-gray-700 hover:text-purple-600">Fitur</a>
+                <a href="#tech" class="block px-3 py-2 text-gray-700 hover:text-purple-600">Teknologi</a>
+                <a href="#demo" class="block px-3 py-2 text-gray-700 hover:text-purple-600">Demo</a>
+                <a href="#contact" class="block px-3 py-2 text-gray-700 hover:text-purple-600">Kontak</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="gradient-bg min-h-screen flex items-center pt-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="text-white">
+                    <h1 class="text-5xl md:text-6xl font-bold mb-6 leading-tight">
+                        Aplikasi Digital
+                        <span class="text-yellow-300">Masa Depan</span>
+                    </h1>
+                    <p class="text-xl mb-8 text-gray-100 leading-relaxed">
+                        Solusi inovatif yang mengubah cara Anda berinteraksi dengan teknologi. 
+                        Dibangun dengan teknologi terdepan untuk pengalaman pengguna yang luar biasa.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <button onclick="scrollToSection('demo')" class="bg-white text-purple-600 px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
+                            Lihat Demo
+                        </button>
+                        <button onclick="window.open('https://github.com', '_blank')" class="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-purple-600 transition-colors">
+                            GitHub Repository
+                        </button>
+                    </div>
+                </div>
+                <div class="relative">
+                    <div class="animate-float">
+                        <div class="bg-white rounded-2xl shadow-2xl p-8 max-w-md mx-auto">
+                            <div class="bg-gradient-to-r from-purple-500 to-blue-500 h-4 rounded-t-lg mb-6"></div>
+                            <div class="space-y-4">
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center">
+                                        <span class="text-2xl">🚀</span>
+                                    </div>
+                                    <div>
+                                        <h3 class="font-semibold text-gray-800">Performa Tinggi</h3>
+                                        <p class="text-gray-600 text-sm">Optimasi maksimal</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
+                                        <span class="text-2xl">🔒</span>
+                                    </div>
+                                    <div>
+                                        <h3 class="font-semibold text-gray-800">Keamanan Terjamin</h3>
+                                        <p class="text-gray-600 text-sm">Enkripsi end-to-end</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
+                                        <span class="text-2xl">⚡</span>
+                                    </div>
+                                    <div>
+                                        <h3 class="font-semibold text-gray-800">Real-time</h3>
+                                        <p class="text-gray-600 text-sm">Update instan</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">Fitur Unggulan</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Aplikasi kami dilengkapi dengan fitur-fitur canggih yang dirancang untuk memenuhi kebutuhan modern
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="card-hover bg-gradient-to-br from-purple-50 to-blue-50 p-8 rounded-2xl border border-purple-100">
+                    <div class="w-16 h-16 bg-purple-500 rounded-2xl flex items-center justify-center mb-6">
+                        <span class="text-3xl text-white">📱</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">Responsive Design</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Interface yang sempurna di semua perangkat - desktop, tablet, dan mobile. 
+                        Pengalaman pengguna yang konsisten di mana pun Anda mengaksesnya.
+                    </p>
+                </div>
+
+                <div class="card-hover bg-gradient-to-br from-blue-50 to-indigo-50 p-8 rounded-2xl border border-blue-100">
+                    <div class="w-16 h-16 bg-blue-500 rounded-2xl flex items-center justify-center mb-6">
+                        <span class="text-3xl text-white">⚡</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">Performa Cepat</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Dioptimasi untuk kecepatan maksimal dengan teknologi caching terdepan. 
+                        Loading time di bawah 2 detik untuk pengalaman yang mulus.
+                    </p>
+                </div>
+
+                <div class="card-hover bg-gradient-to-br from-green-50 to-teal-50 p-8 rounded-2xl border border-green-100">
+                    <div class="w-16 h-16 bg-green-500 rounded-2xl flex items-center justify-center mb-6">
+                        <span class="text-3xl text-white">🔐</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">Keamanan Tinggi</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Sistem keamanan berlapis dengan enkripsi AES-256 dan autentikasi multi-faktor. 
+                        Data Anda terlindungi dengan standar enterprise.
+                    </p>
+                </div>
+
+                <div class="card-hover bg-gradient-to-br from-yellow-50 to-orange-50 p-8 rounded-2xl border border-yellow-100">
+                    <div class="w-16 h-16 bg-yellow-500 rounded-2xl flex items-center justify-center mb-6">
+                        <span class="text-3xl text-white">🤖</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">AI Integration</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Powered by machine learning untuk memberikan rekomendasi personal dan 
+                        otomatisasi cerdas yang meningkatkan produktivitas Anda.
+                    </p>
+                </div>
+
+                <div class="card-hover bg-gradient-to-br from-pink-50 to-rose-50 p-8 rounded-2xl border border-pink-100">
+                    <div class="w-16 h-16 bg-pink-500 rounded-2xl flex items-center justify-center mb-6">
+                        <span class="text-3xl text-white">📊</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">Analytics Dashboard</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Dashboard analitik real-time dengan visualisasi data yang interaktif. 
+                        Insight mendalam untuk pengambilan keputusan yang lebih baik.
+                    </p>
+                </div>
+
+                <div class="card-hover bg-gradient-to-br from-indigo-50 to-purple-50 p-8 rounded-2xl border border-indigo-100">
+                    <div class="w-16 h-16 bg-indigo-500 rounded-2xl flex items-center justify-center mb-6">
+                        <span class="text-3xl text-white">🌐</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">Cloud Integration</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Sinkronisasi seamless dengan layanan cloud populer. 
+                        Akses data Anda dari mana saja dengan backup otomatis.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tech Stack Section -->
+    <section id="tech" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">Teknologi yang Digunakan</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Dibangun dengan teknologi terdepan untuk performa dan skalabilitas optimal
+                </p>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8">
+                <div class="tech-icon bg-white p-6 rounded-2xl shadow-lg text-center">
+                    <div class="text-4xl mb-3">⚛️</div>
+                    <h4 class="font-semibold text-gray-800">React</h4>
+                </div>
+                <div class="tech-icon bg-white p-6 rounded-2xl shadow-lg text-center">
+                    <div class="text-4xl mb-3">🟢</div>
+                    <h4 class="font-semibold text-gray-800">Node.js</h4>
+                </div>
+                <div class="tech-icon bg-white p-6 rounded-2xl shadow-lg text-center">
+                    <div class="text-4xl mb-3">🍃</div>
+                    <h4 class="font-semibold text-gray-800">MongoDB</h4>
+                </div>
+                <div class="tech-icon bg-white p-6 rounded-2xl shadow-lg text-center">
+                    <div class="text-4xl mb-3">🔥</div>
+                    <h4 class="font-semibold text-gray-800">Firebase</h4>
+                </div>
+                <div class="tech-icon bg-white p-6 rounded-2xl shadow-lg text-center">
+                    <div class="text-4xl mb-3">☁️</div>
+                    <h4 class="font-semibold text-gray-800">AWS</h4>
+                </div>
+                <div class="tech-icon bg-white p-6 rounded-2xl shadow-lg text-center">
+                    <div class="text-4xl mb-3">🐳</div>
+                    <h4 class="font-semibold text-gray-800">Docker</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Demo Section -->
+    <section id="demo" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">Demo Aplikasi</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Lihat langsung bagaimana aplikasi kami bekerja dengan demo interaktif
+                </p>
+            </div>
+
+            <div class="bg-gradient-to-r from-purple-600 to-blue-600 rounded-3xl p-8 md:p-12">
+                <div class="bg-white rounded-2xl p-8 shadow-2xl">
+                    <div class="flex items-center justify-between mb-6">
+                        <h3 class="text-2xl font-bold text-gray-800">Dashboard Demo</h3>
+                        <div class="flex space-x-2">
+                            <div class="w-3 h-3 bg-red-500 rounded-full"></div>
+                            <div class="w-3 h-3 bg-yellow-500 rounded-full"></div>
+                            <div class="w-3 h-3 bg-green-500 rounded-full"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="grid md:grid-cols-3 gap-6 mb-8">
+                        <div class="bg-gradient-to-r from-blue-500 to-blue-600 text-white p-6 rounded-xl">
+                            <h4 class="text-lg font-semibold mb-2">Total Users</h4>
+                            <p class="text-3xl font-bold" id="user-count">12,847</p>
+                            <p class="text-blue-100 text-sm">↗️ +12% dari bulan lalu</p>
+                        </div>
+                        <div class="bg-gradient-to-r from-green-500 to-green-600 text-white p-6 rounded-xl">
+                            <h4 class="text-lg font-semibold mb-2">Revenue</h4>
+                            <p class="text-3xl font-bold" id="revenue">$89,432</p>
+                            <p class="text-green-100 text-sm">↗️ +8% dari bulan lalu</p>
+                        </div>
+                        <div class="bg-gradient-to-r from-purple-500 to-purple-600 text-white p-6 rounded-xl">
+                            <h4 class="text-lg font-semibold mb-2">Active Sessions</h4>
+                            <p class="text-3xl font-bold" id="sessions">2,847</p>
+                            <p class="text-purple-100 text-sm">↗️ +15% dari kemarin</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-gray-50 p-6 rounded-xl">
+                        <h4 class="text-lg font-semibold text-gray-800 mb-4">Real-time Activity</h4>
+                        <div class="space-y-3" id="activity-feed">
+                            <div class="flex items-center space-x-3 p-3 bg-white rounded-lg">
+                                <div class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                                <span class="text-gray-700">User baru mendaftar dari Jakarta</span>
+                                <span class="text-gray-500 text-sm ml-auto">2 detik lalu</span>
+                            </div>
+                            <div class="flex items-center space-x-3 p-3 bg-white rounded-lg">
+                                <div class="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
+                                <span class="text-gray-700">Transaksi berhasil diproses</span>
+                                <span class="text-gray-500 text-sm ml-auto">5 detik lalu</span>
+                            </div>
+                            <div class="flex items-center space-x-3 p-3 bg-white rounded-lg">
+                                <div class="w-2 h-2 bg-purple-500 rounded-full animate-pulse"></div>
+                                <span class="text-gray-700">Backup data selesai</span>
+                                <span class="text-gray-500 text-sm ml-auto">12 detik lalu</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-8 text-center">
+                        <button onclick="refreshDemo()" class="bg-gradient-to-r from-purple-600 to-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:from-purple-700 hover:to-blue-700 transition-all">
+                            Refresh Data
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-gray-900 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4">Hubungi Kami</h2>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                    Tertarik untuk berkolaborasi atau punya pertanyaan? Jangan ragu untuk menghubungi kami
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-12">
+                <div>
+                    <h3 class="text-2xl font-bold mb-6">Mari Berkolaborasi</h3>
+                    <div class="space-y-6">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-12 bg-purple-600 rounded-lg flex items-center justify-center">
+                                <span class="text-xl">📧</span>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold">Email</h4>
+                                <p class="text-gray-300">developer@digitalapp.com</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center">
+                                <span class="text-xl">💼</span>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold">LinkedIn</h4>
+                                <p class="text-gray-300">linkedin.com/in/digitalapp</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-12 bg-gray-600 rounded-lg flex items-center justify-center">
+                                <span class="text-xl">🐙</span>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold">GitHub</h4>
+                                <p class="text-gray-300">github.com/digitalapp</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-gray-800 p-8 rounded-2xl">
+                    <h3 class="text-2xl font-bold mb-6">Kirim Pesan</h3>
+                    <div class="bg-yellow-100 border border-yellow-400 text-yellow-800 px-4 py-3 rounded-lg mb-6">
+                        <p class="text-sm"><strong>Demo:</strong> Form ini hanya untuk tampilan. Untuk website yang berfungsi penuh, hubungi kami melalui kontak di samping.</p>
+                    </div>
+                    <form class="space-y-6">
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Nama</label>
+                            <input type="text" class="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent" placeholder="Nama Anda">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Email</label>
+                            <input type="email" class="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent" placeholder="email@example.com">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Pesan</label>
+                            <textarea rows="4" class="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent" placeholder="Tulis pesan Anda..."></textarea>
+                        </div>
+                        <button type="button" onclick="showDemoAlert()" class="w-full bg-gradient-to-r from-purple-600 to-blue-600 text-white py-3 rounded-lg font-semibold hover:from-purple-700 hover:to-blue-700 transition-all">
+                            Kirim Pesan
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center mb-4">
+                        <div class="w-8 h-8 bg-gradient-to-r from-purple-500 to-blue-500 rounded-lg mr-3"></div>
+                        <span class="text-xl font-bold">DigitalApp</span>
+                    </div>
+                    <p class="text-gray-400 leading-relaxed">
+                        Solusi digital inovatif untuk masa depan yang lebih baik. 
+                        Dibangun dengan passion dan teknologi terdepan.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Produk</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white transition-colors">Fitur Utama</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">API Documentation</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Pricing</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Changelog</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Perusahaan</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white transition-colors">Tentang Kami</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Tim</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Karir</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Blog</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Dukungan</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white transition-colors">Help Center</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Dokumentasi</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Status</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Kontak</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 DigitalApp. Semua hak dilindungi. Dibuat dengan ❤️ untuk masa depan digital.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Smooth scrolling
+        function scrollToSection(sectionId) {
+            document.getElementById(sectionId).scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
+
+        // Add smooth scrolling to all navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Demo functionality
+        function refreshDemo() {
+            // Animate numbers
+            const userCount = document.getElementById('user-count');
+            const revenue = document.getElementById('revenue');
+            const sessions = document.getElementById('sessions');
+            
+            // Generate random numbers for demo
+            const newUsers = Math.floor(Math.random() * 5000) + 10000;
+            const newRevenue = Math.floor(Math.random() * 50000) + 50000;
+            const newSessions = Math.floor(Math.random() * 2000) + 1000;
+            
+            userCount.textContent = newUsers.toLocaleString();
+            revenue.textContent = '$' + newRevenue.toLocaleString();
+            sessions.textContent = newSessions.toLocaleString();
+            
+            // Add new activity
+            const activities = [
+                'User baru mendaftar dari Surabaya',
+                'Pembayaran berhasil diverifikasi',
+                'Data analytics diperbarui',
+                'Notifikasi push terkirim',
+                'Cache sistem dibersihkan',
+                'User login dari Bandung',
+                'Laporan bulanan dibuat'
+            ];
+            
+            const activityFeed = document.getElementById('activity-feed');
+            const newActivity = document.createElement('div');
+            newActivity.className = 'flex items-center space-x-3 p-3 bg-white rounded-lg';
+            newActivity.innerHTML = `
+                <div class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                <span class="text-gray-700">${activities[Math.floor(Math.random() * activities.length)]}</span>
+                <span class="text-gray-500 text-sm ml-auto">Baru saja</span>
+            `;
+            
+            activityFeed.insertBefore(newActivity, activityFeed.firstChild);
+            
+            // Remove oldest activity if more than 5
+            if (activityFeed.children.length > 5) {
+                activityFeed.removeChild(activityFeed.lastChild);
+            }
+        }
+
+        // Demo alert for contact form
+        function showDemoAlert() {
+            alert('Demo: Pesan tidak akan terkirim. Ini hanya tampilan untuk portfolio. Untuk menghubungi developer, gunakan informasi kontak yang tersedia.');
+        }
+
+        // Auto-refresh demo every 10 seconds
+        setInterval(refreshDemo, 10000);
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                navbar.classList.add('bg-white/95', 'backdrop-blur-sm');
+            } else {
+                navbar.classList.remove('bg-white/95', 'backdrop-blur-sm');
+            }
+        });
+
+        // Add loading animation on page load
+        window.addEventListener('load', function() {
+            document.body.classList.add('loaded');
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'96fcbb0e710b4dbc',t:'MTc1NTMwMzI1Ny4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
